@@ -1,9 +1,9 @@
 class NetPayableService
-  DIS_EMPLOYEE = Proc.new {|user, bill| bill.amount - (0.2*bill.amount).round(2)}
-  NEW_USER = Proc.new {|user, bill| bill.amount - (0.1*bill.amount).round(2)}
-  YEAR_OLD = Proc.new {|user, bill| bill.amount - (0.05*bill.amount).round(2)}
-  GENERAL_DIS = Proc.new {|user, bill| bill.amount - ((bill.amount/100).floor*5)}
-  NO_DIS = Proc.new {|user, bill| bill.amount}
+  DIS_EMPLOYEE = Proc.new {|amt| amt - (0.2*amt).round(2)}
+  NEW_USER = Proc.new {|amt| amt - (0.1*amt).round(2)}
+  YEAR_OLD = Proc.new {|amt| amt - (0.05*amt).round(2)}
+  GENERAL_DIS = Proc.new {|amt| amt - ((amt/100).floor*5)}
+  NO_DIS = Proc.new {|amt| amt}
 
   attr_accessor :user, :bill
 
@@ -27,6 +27,6 @@ class NetPayableService
           NO_DIS
         end
 
-    dp.call(user, bill)
+    dp.call(bill.amount)
   end
 end
