@@ -19,4 +19,4 @@ rspec spec/net_payable_spec.rb ## assuming you are in the root of the project.
 In order to add more discount types:
 
 1. open `net_payable_service.rb`, add another set of constant, which is a proc, where you will add the discounted price logic.
-2. add a condition in the `discounted_price` function which will determine when that discounted price will be used.
+2. add a condition in the `discounted_price` function which will determine which proc will be used when
